@@ -25,28 +25,30 @@ import random
 WORDS = ('Корея', 'BTS', 'Намджун', 'Сокджин', 'Юнги', 'Хосок', 'Чимин', 'Техен', 'Чонгук')
 word = random.choice(WORDS)
 anagramma = ''
+i_dont_know = "я не знаю"
 scores = 100
 
 while (len(word)) != (len(anagramma)):
     position = random.randrange(len(word))
-    if int(position.append(len(word))):
+    if :
         anagramma += word[position]
     else:
         continue
 
-print(anagramma)
+print('Вот анаграмма: ', anagramma)
 response = input('Попробуйте угадать слово: ')
 
 while response != word or scores != 0:
-    response_2 = input('Введите слово еще раз: ')
-    if response_2 == "Не знаю":
-        hint1 = word[0]
-        response_3 = input('Введите слово еще раз: ')
-    elif response_3 == "Не знаю":
-        hint2 = word[0] + word[1]
-    else:
-        hint3 = word[0] + word[1] + word[2]
-    scores -= 5
+    if response != i_dont_know:
+        print('Ваш ответ неверный.')
+    if response == i_dont_know:
+        scores -= 5
+        print('Ваша подсказка: ', hint)
+    response = input('Попробуйте отгадать оригинальное слово: ')
+    if response == word:
+        print('Поздравляю, вы отгадали!')
+    if scores < 0:
+        scores = 0
 scores -= 1
 
 print('Спасибо за игру! У вас', scores, 'очков!')
