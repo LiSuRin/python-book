@@ -16,42 +16,49 @@
 #       - отнять попытку = 1 от общего количества очков (100)
 # 6. Поздравить игрока, вывести отгаданное слово и количество очков
 
-print('Добро пожаловать в игру "Анаграммы"! Вам нужно переставить буквы так, чтоб получилось слово, которое было'
-      'загаданно изначально. Если вам требуется подсказка, введите: "Не знаю". Если вы не будете использовать подсказку,'
-      'количество очков будет больше. Каждая попытка угадывания слова равняется 1 очку')
+print('Добро пожаловать в игру "Анаграммы"! Вам нужно переставить буквы так, чтоб получилось слово, которое было\n'
+      'загаданно изначально. Если вам требуется подсказка, введите: "?". Если вы не будете использовать подсказку,\n'
+      'количество очков будет больше. Каждая попытка угадывания слова равняется 1 очку\n')
 
 import random
 
 WORDS = ('Корея', 'BTS', 'Намджун', 'Сокджин', 'Юнги', 'Хосок', 'Чимин', 'Техен', 'Чонгук')
 word = random.choice(WORDS)
 anagramma = ''
-i_dont_know = "я не знаю"
+list_position = []
 scores = 100
+hint_score = 1
 
-while (len(word)) != (len(anagramma)):
+while len(word) != len(anagramma):
     position = random.randrange(len(word))
-    if :
+    if position not in list_position:
+        list_position.append(position)
         anagramma += word[position]
     else:
         continue
 
-print('Вот анаграмма: ', anagramma)
+print('Отгадайте анаграмму: ', anagramma.lower())
 response = input('Попробуйте угадать слово: ')
 
-while response != word or scores != 0:
-    if response != i_dont_know:
+while response != word or scores <= 0:
+    if "?" in response:
+        if hint_score <= 3:
+            print('Ваша подсказка: ', word[:hint_score])
+            hint_score += 1
+            scores -= 5
+        else:
+            print('Увы! У вас закончились подсказки!', 'Ваша последняя подсказка:', word[:3])
+            hint_score += 1
+    else:
         print('Ваш ответ неверный.')
-    if response == i_dont_know:
-        scores -= 5
-        print('Ваша подсказка: ', hint)
-    response = input('Попробуйте отгадать оригинальное слово: ')
-    if response == word:
-        print('Поздравляю, вы отгадали!')
-    if scores < 0:
-        scores = 0
-scores -= 1
+    response = input('Попробуйте угадать слово: ')
+    scores -= 1
 
-print('Спасибо за игру! У вас', scores, 'очков!')
+if scores <= 0:
+    print('Вы проиграли, потратив все очки!')
+else:
+    print('Поздравляю, вы отгадали!')
+    print('Спасибо за игру! У вас', scores, 'очков!')
 
 
 
