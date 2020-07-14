@@ -35,7 +35,7 @@ response = input('Попробуйте угадать слово из ' + str(le
 while tries >= 1 and response != word:
     if response in word:
         print('Да!')
-    if response not in word:
+    else:
         print('Нет!')
     tries -= 1
     response = input('Попробуйте угадать слово из ' + str(len(word)) + ' букв:')
