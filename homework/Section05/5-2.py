@@ -5,20 +5,16 @@
 
 print('Генератор персонажей игры\n',
 	"""
-		'У вас есть 30 зарядов, которые можно распределить на: 
+		У вас есть 30 зарядов, которые можно распределить на: 
 
 		1 - Strength
 		2 - Health
 		3 - Wisdom
 		4 - Sleight
-	"""
-	)
+	""")
 score = 30
 new_score = ''
-board = {'Strength': 0,
-		'Health': 0, 
-		'Wisdom': 0, 
-		'Sleight': 0}
+board = {'Strength': 0, 'Health': 0, 'Wisdom': 0, 'Sleight': 0}
 overall_choice = None
 choice = None
 
@@ -28,7 +24,7 @@ while overall_choice != 0:
 		Что вы хотите сделать?
 
 		0 - Выход
-		1 - Добавить очки к любой характеристике на выбор
+		1 - Добавить очки к характеристике
 		2 - Удалить очки из характеристики
 		3 - Закончить распределение очков
 		"""
@@ -41,34 +37,31 @@ while overall_choice != 0:
 		"""
 		Куда вы хотите добавить очки?:
 
-		1 - Strength
-		2 - Health
-		3 - Wisdom
-		4 - Sleight
+		board.keys()
 		"""
 		)
 		choice = int(input('Ваш выбор: '))
 		if choice == '1':
 			new_score = (input('Сколько очков вы хотите добавить?: '))
-			if new_score <= score:
+			if new_score <= str(score):
 				board['Strength'] += int(new_score)
 			else:
 				print('Недостаточное количество очков.')
 		elif choice == '2':
 			new_score = (input('Сколько очков вы хотите добавить?: '))
-			if new_score <= score:
+			if new_score <= str(score):
 				board['Health'] += int(new_score)
 			else:
 				print('Недостаточное количество очков.')
 		elif choice == '3':
 			new_score = (input('Сколько очков вы хотите добавить?: '))
-			if new_score <= score:
+			if new_score <= str(score):
 				board['Wisdom'] += int(new_score)
 			else:
 				print('Недостаточное количество очков.')
 		elif choice == '4':
 			new_score = (input('Сколько очков вы хотите добавить?: '))
-			if new_score <= score:
+			if new_score <= str(score):
 				board['Sleight'] += new_score
 			else:
 				print('Недостаточное количество очков.')
@@ -77,34 +70,31 @@ while overall_choice != 0:
 		"""
 		Из какой характеристики вы хотите убрать очки?:
 
-		1 - Strength
-		2 - Health
-		3 - Wisdom
-		4 - Sleight
+		board.keys()
 		"""
 		)
 		choice = int(input('Ваш выбор: '))
 		if choice == '1':
 			new_score = (input('Сколько очков вы хотите убрать?: '))
-			if new_score >= 0 and (['Strength'] - new_score) >= 0:
+			if new_score and (board['Strength'] - int(new_score)) >= 0:
 				board['Strength'] -= new_score
 			else:
 				print('Недостаточное количество очков.')
 		if choice == '2':
 			new_score = (input('Сколько очков вы хотите убрать?: '))
-			if new_score >= 0 and (['Health'] - new_score) >= 0:
+			if new_score and (board['Health'] - int(new_score)) >= 0:
 				board['Health'] -= new_score
 			else:
 				print('Недостаточное количество очков.')
 		if choice == '3':
 			new_score = (input('Сколько очков вы хотите убрать?: '))
-			if new_score >= 0 and (['Wisdom'] - new_score) >= 0:
+			if new_score and (board['Wisdom'] - int(new_score)) >= 0:
 				board['Wisdom'] -= new_score
 			else:
 				print('Недостаточное количество очков.')
 		if choice == '4':
 			new_score = (input('Сколько очков вы хотите убрать?: '))
-			if new_score >= 0 and (['Sleight'] - new_score) >= 0:
+			if new_score and (board['Sleight'] - int(new_score)) >= 0:
 				board['Sleight'] -= new_score
 			else:
 				print('Недостаточное количество очков.')
@@ -113,3 +103,5 @@ while overall_choice != 0:
 				break
 			else:
 				print('Используйте оставшиеся очки!')
+
+print(board.items())
