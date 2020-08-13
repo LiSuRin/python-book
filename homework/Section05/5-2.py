@@ -37,7 +37,10 @@ while overall_choice != 0:
 		"""
 		Куда вы хотите добавить очки?:
 
-		board.keys()
+		1 - Strength
+		2 - Health
+		3 - Wisdom
+		4 - Sleight
 		"""
 		)
 		choice = int(input('Ваш выбор: '))
@@ -70,7 +73,10 @@ while overall_choice != 0:
 		"""
 		Из какой характеристики вы хотите убрать очки?:
 
-		board.keys()
+		1 - Strength
+		2 - Health
+		3 - Wisdom
+		4 - Sleight
 		"""
 		)
 		choice = int(input('Ваш выбор: '))
