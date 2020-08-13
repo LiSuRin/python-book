@@ -8,4 +8,4 @@ def ask_number(question, low, high, step):
     return response
 
 
-ask_number(question='Какой-то вопрос', low=0, high=9, step=1)
+ask_number(question='Введите число: ', low=0, high=9, step=1)
