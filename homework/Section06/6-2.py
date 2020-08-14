@@ -1,30 +1,34 @@
 import random
 
-print(
-    """
-        Добро пожаловать в игру 'Угадай слово'!
-        Вы можете попробовать угадать слово, на это дано 5 попыток. 
-        Вы можете проверять, есть ли буква в слове.
-    """
-)
-WORDS = ('Корея', 'Школа', 'Компьютер', 'Черешня')
-word = random.choice(WORDS)
+print("\tWelcome to 'Guess My Number'!")
+print("\nI'm thinking of a number between 1 and 100.")
+print("Try to guess it in as few attempts as possible.\n")
 
 
-def ask_number(low=0, high=5):
-    tries = 0
-    while tries in range(low, high):
-        response = input('Попробуйте угадать слово из ' + str(len(word)) + ' букв:')
-        tries += 1
-        if response in word:
-            print('Да!')
-        else:
-            print('Нет!')
-    response = input('Попробуйте угадать слово из ' + str(len(word)) + ' букв:')
-    if response == word:
-        print('Поздравляю, вы выиграли!')
-        break
+def ask_number(question, low=1, high=100, step=1):
+    response = None
+    while response not in range(low, high, step):
+        response = int(input(question))
     return response
-ask_number()
-if response != word:
-    print('Вы проиграли, попробуйте еще раз!')
+
+
+# set the initial values
+the_number = random.randint(1, 100)
+guess = ask_number("Take a guess: ")
+tries = 1
+
+
+# guessing loop
+while guess != the_number:
+    if guess > the_number:
+        print("Lower...")
+    else:
+        print("Higher...")
+
+    guess = ask_number("Take a guess: ")
+    tries += 1
+
+print("You guessed it!  The number was", the_number)
+print("And it only took you", tries, "tries!\n")
+
+input("\n\nPress the enter key to exit.")
